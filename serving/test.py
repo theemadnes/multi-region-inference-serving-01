@@ -7,13 +7,25 @@ model = Llama(model_path = model_path,
               use_mlock = True)        # enable memory lock so not swap
 
 
-prompt = """
+'''prompt = """
 [INST]<<SYS>>
 You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe.  Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature. If a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information.
 
 What is the best way to learn programming?
 [/INST]
+"""'''
+
+prompt = """
+[INST]<<SYS>>
+What is the history of Manchester United?
+[/INST]
 """
 
 output = model(prompt = prompt, max_tokens = 120, temperature = 0.2)
+print(output)
+output = model(prompt = prompt, max_tokens = 240, temperature = 0.4)
+print(output)
+output = model(prompt = prompt, max_tokens = 480, temperature = 0.6)
+print(output)
+output = model(prompt = prompt, max_tokens = 960, temperature = 0.6)
 print(output)
