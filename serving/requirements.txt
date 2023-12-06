@@ -1,0 +1,6 @@
+#vllm
+transformers
+tensorflow
+sentencepiece
+llama-cpp-python
+langchain
