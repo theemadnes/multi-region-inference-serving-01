@@ -1,9 +1,10 @@
 # multi-region-inference-serving-01
 Playing around with serving an LLM app across multiple region using GKE
 
-### setting up Cloud Workstations
+### setting up Cloud Workstation
 
 ```
+# using workstation with n1-standard-8 & T4 GPU
 # install linux homebrew 
 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
