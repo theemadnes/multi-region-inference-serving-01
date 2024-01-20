@@ -4,11 +4,6 @@ Playing around with serving an LLM app across multiple region using GKE
 ### setting up Cloud Workstations
 
 ```
-gcloud beta workstations configs update config-lpuvfdv9 \
-  --cluster=cluster-lpqhjitt --region=us-central1 --machine-type=n1-standard-8 \
-  --accelerator-type=nvidia-tesla-p4 --accelerator-count=1
-
-
 # install linux homebrew 
 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
