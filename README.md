@@ -21,3 +21,10 @@ cat ~/.ssh/id_ed25519.pub
 # test
 ```
 
+### download mistral 7b
+
+```
+mkdir mistral-7b
+wget -O mistral-7b/mistral-7b-v0.1.Q5_K_M.gguf https://huggingface.co/TheBloke/Mistral-7B-v0.1-GGUF/resolve/main/mistral-7b-v0.1.Q5_K_M.gguf
+```
+
