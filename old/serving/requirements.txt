@@ -1,0 +1,8 @@
+#vllm
+transformers
+tensorflow
+sentencepiece
+llama-cpp-python
+langchain
+numpy==1.24.4
+gguf>=0.1.0
