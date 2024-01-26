@@ -37,3 +37,49 @@ ollama run mistral
 #wget -O mistral-7b/config.json https://huggingface.co/TheBloke/Mistral-7B-v0.1-GGUF/resolve/main/config.json
 ```
 
+### setting up vllm to test
+
+```
+cd serving
+python3 -m venv .venv
+source bin/activate
+pip install -r requirements.txt
+git config --global credential.helper store
+huggingface-cli login
+
+python -u -m vllm.entrypoints.openai.api_server \
+       --tensor-parallel-size 2 \
+       --host 0.0.0.0 \
+       --model mistralai/Mistral-7B-Instruct-v0.2
+
+python -u -m vllm.entrypoints.openai.api_server \
+       --tensor-parallel-size 2 \
+       --host 0.0.0.0 \
+       --dtype half \
+       --model mistralai/Mistral-7B-Instruct-v0.2
+
+python -u -m vllm.entrypoints.openai.api_server \
+       --host 0.0.0.0 \
+       --dtype half \
+       --max-num-batched-tokens 32768 \
+       --max-num-seqs 2048 \
+       --model mistralai/Mistral-7B-Instruct-v0.2
+
+python -u -m vllm.entrypoints.openai.api_server \
+       --host 0.0.0.0 \
+       --dtype half \
+       --tensor-parallel-size 2 \
+       --model mistralai/Mistral-7B-Instruct-v0.2
+
+python -u -m vllm.entrypoints.openai.api_server \
+       --host 0.0.0.0 \
+       --dtype half \
+       --tensor-parallel-size 2 \
+       --gpu-memory-utilization 1.0 \
+       --model meta-llama/Llama-2-7b-chat-hf
+
+python -u -m vllm.entrypoints.openai.api_server \
+       --host 0.0.0.0 \
+       --dtype half \
+       --model mistralai/Mistral-7B-v0.1
+```
