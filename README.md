@@ -72,6 +72,8 @@ huggingface-cli login
 
 python -u -m vllm.entrypoints.openai.api_server \
        --tensor-parallel-size 1 \
+       --gpu-memory-utilization 0.9 \
+       --max-model-len 15000 \
        --host 0.0.0.0 \
        --model mistralai/Mistral-7B-Instruct-v0.2
 
