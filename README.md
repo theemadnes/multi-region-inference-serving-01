@@ -52,14 +52,6 @@ ollama serve
 ollama run mistral
 ```
 
-### download mistral 7b
-
-```
-#mkdir mistral-7b
-#wget -O mistral-7b/mistral-7b-v0.1.Q5_K_M.gguf https://huggingface.co/TheBloke/Mistral-7B-v0.1-GGUF/resolve/main/mistral-7b-v0.1.Q5_K_M.gguf
-#wget -O mistral-7b/config.json https://huggingface.co/TheBloke/Mistral-7B-v0.1-GGUF/resolve/main/config.json
-```
-
 ### setting up vllm to test
 
 ```
@@ -107,4 +99,19 @@ python -u -m vllm.entrypoints.openai.api_server \
        --host 0.0.0.0 \
        --dtype half \
        --model mistralai/Mistral-7B-v0.1
+```
+
+### test
+
+```
+curl http://localhost:8000/v1/models -s | jq
+
+curl http://localhost:8000/v1/completions -s \
+       -H "Content-Type: application/json" \
+       -d '{
+              "model": "mistralai/Mistral-7B-Instruct-v0.2",
+              "prompt": "San Francisco is a",
+              "max_tokens": 100,
+              "temperature": 0
+       }' | jq
 ```
