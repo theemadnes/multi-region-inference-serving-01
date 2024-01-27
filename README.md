@@ -1,6 +1,28 @@
 # multi-region-inference-serving-01
 Playing around with serving an LLM app across multiple region using GKE
 
+### setting up GCE instance
+
+```
+export PROJECT=e2m-private-test-01
+export IMAGE_FAMILY=tf-ent-latest-gpu
+export ZONE=us-central1-a
+export INSTANCE_NAME=llm-test-01
+export NETWORK=default
+
+gcloud compute firewall-rules create --project=$PROJECT --network=$NETWORK default-allow-ssh --allow=tcp:22
+
+gcloud compute instances create $INSTANCE_NAME \
+  --project=$PROJECT \
+  --zone=$ZONE \
+  --machine-type=g2-standard-8 \
+  --image-family=$IMAGE_FAMILY \
+  --image-project=deeplearning-platform-release \
+  --maintenance-policy=TERMINATE \
+  --accelerator="type=nvidia-l4,count=1" \
+  --metadata="install-nvidia-driver=True"
+```
+
 ### setting up Cloud Workstation
 
 ```
