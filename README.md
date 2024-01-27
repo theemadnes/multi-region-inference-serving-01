@@ -16,6 +16,7 @@ gcloud compute instances create $INSTANCE_NAME \
   --project=$PROJECT \
   --zone=$ZONE \
   --machine-type=g2-standard-8 \
+  --boot-disk-size=200GB \
   --image-family=$IMAGE_FAMILY \
   --image-project=deeplearning-platform-release \
   --maintenance-policy=TERMINATE \
@@ -70,7 +71,7 @@ git config --global credential.helper store
 huggingface-cli login
 
 python -u -m vllm.entrypoints.openai.api_server \
-       --tensor-parallel-size 2 \
+       --tensor-parallel-size 1 \
        --host 0.0.0.0 \
        --model mistralai/Mistral-7B-Instruct-v0.2
 
