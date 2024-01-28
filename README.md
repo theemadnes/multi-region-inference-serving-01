@@ -26,6 +26,9 @@ gcloud compute instances create $INSTANCE_NAME \
   --maintenance-policy=TERMINATE \
   --accelerator="type=nvidia-l4,count=1" \
   --metadata="install-nvidia-driver=True"
+
+# turn on remote SSH
+gcloud --project $PROJECT compute config-ss
 ```
 
 ### setting up Cloud Workstation
