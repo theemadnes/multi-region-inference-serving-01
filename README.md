@@ -3,6 +3,10 @@ Playing around with serving an LLM app across multiple region using GKE
 
 ### setting up GCE instance
 
+helpful links:
+- https://learn.canceridc.dev/cookbook/virtual-machines/using-vs-code-with-gcp-vms
+
+
 ```
 export PROJECT=e2m-private-test-01
 export IMAGE_FAMILY=tf-ent-latest-gpu
@@ -56,11 +60,11 @@ ollama run mistral
 
 ```
 cd serving
-python3 -m venv .venv
+python3 -m venv .
 source bin/activate
 pip install -r requirements.txt
-git config --global credential.helper store
-huggingface-cli login
+#git config --global credential.helper store
+#huggingface-cli login
 
 python -u -m vllm.entrypoints.openai.api_server \
        --tensor-parallel-size 1 \
