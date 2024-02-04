@@ -108,6 +108,13 @@ python -u -m vllm.entrypoints.openai.api_server \
        --model mistralai/Mistral-7B-v0.1
 ```
 
+### build image
+
+```
+docker build -t us-central1-docker.pkg.dev/cicd-system-demo-01/multi-region-inference-serving/multi-region-inference-serving:latest .
+docker push us-central1-docker.pkg.dev/cicd-system-demo-01/multi-region-inference-serving/multi-region-inference-serving:latest
+```
+
 ### test
 
 ```
