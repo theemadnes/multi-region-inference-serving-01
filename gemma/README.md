@@ -55,5 +55,9 @@ curl -X POST http://localhost:8000/generate \
 EOF
 done
 
+# set up gradio
+kubectl apply -f gradio.yaml
+
+kubectl port-forward service/gradio 8080:8080
 
 ```
